@@ -1,11 +1,27 @@
-import React from "react";
+import React from 'react';
 
-import { Skeleton as MuiSkeleton } from "@mui/material";
+import { Skeleton as MuiSkeleton } from '@mui/material';
 
-const Skeleton = React.forwardRef<HTMLDivElement>((props, ref) => (
-    <div css={{ width: "25%", padding: 8 }} ref={ref}>
-      <MuiSkeleton css={{ transform: "scale(1)" }} height={370} width="100%" />
+type SkeletonProps = {
+  height?: number;
+  width?: string;
+};
+
+const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
+  ({ height, width }, ref) => (
+    <div css={{ width, padding: 8 }} ref={ref}>
+      <MuiSkeleton
+        css={{ transform: 'scale(1)' }}
+        height={height}
+        width="100%"
+      />
     </div>
-  ));
+  )
+);
 
 export default Skeleton;
+
+Skeleton.defaultProps = {
+  height: 370,
+  width: '25%',
+};

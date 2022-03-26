@@ -13,6 +13,7 @@ const BookList = () => {
   const { books, fetchMore } = useBooks();
   const { finit } = useRecoilValue(paginationState);
   const setSelected = useSetRecoilState(selectedBookState);
+  
   const { ref, inView } = useInView({
     threshold: 0.3,
   });
