@@ -13,5 +13,5 @@ export const booksListState = atom<Book[]>({
 
 export const selectedBookState = atom<Book>({
   key: 'selected-book',
-  default: null,
+  default: undefined,
 });

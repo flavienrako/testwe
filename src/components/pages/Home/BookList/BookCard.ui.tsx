@@ -4,14 +4,24 @@ import React from "react";
 import { Box, ButtonIcon, Icon, Title } from "@billers/library";
 
 const BookCard = (props) => {
-  const { ROOT, gwogxu, action, smkmgo, fxmvju, name, hbirkj, date, yhhcei } =
-    props;
+  const {
+    ROOT,
+    card,
+    wjntle,
+    action,
+    ewbgoa,
+    rilylh,
+    name,
+    rskfwx,
+    date,
+    qnfhtb,
+  } = props;
   return (
-    <Box {...ROOT}>
-      <ButtonIcon {...gwogxu} Icon={<Icon {...smkmgo} />} {...action} />
-      <Box {...yhhcei}>
-        <Title {...fxmvju} {...name} />
-        <Title {...hbirkj} {...date} />
+    <Box {...ROOT} {...card}>
+      <ButtonIcon {...wjntle} Icon={<Icon {...ewbgoa} />} {...action} />
+      <Box {...qnfhtb}>
+        <Title {...rilylh} {...name} />
+        <Title {...rskfwx} {...date} />
       </Box>
     </Box>
   );
@@ -38,7 +48,7 @@ BookCard.defaultProps = {
       justifyContent: "center",
     },
   },
-  gwogxu: {
+  wjntle: {
     type: "button",
     disabled: false,
     disableFocusRipple: false,
@@ -53,25 +63,25 @@ BookCard.defaultProps = {
       "&:hover": { color: "#252675", background: "#FFFFFFCC" },
     },
   },
-  smkmgo: {
+  ewbgoa: {
     color: "inherit",
     icon: "FaRegBookmark",
     fontSize: "inherit",
     hidden: false,
   },
-  fxmvju: {
+  rilylh: {
     variant: "h2",
     text: "{{name}}",
     gutterBottom: false,
     noWrap: false,
     css: { fontSize: "32px" },
   },
-  hbirkj: {
+  rskfwx: {
     variant: "overline",
     text: "Publié le {{date}} <br>par {{publisher}}",
     gutterBottom: false,
     noWrap: false,
     css: { color: "#C8C8C8" },
   },
-  yhhcei: { tag: "div" },
+  qnfhtb: { tag: "div" },
 };
