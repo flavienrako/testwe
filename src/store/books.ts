@@ -1,19 +1,14 @@
-import { atom, selector } from 'recoil';
+import { atom } from 'recoil';
 import { Book } from 'types';
 
-export const paginationState = atom<number>({
+export const paginationState = atom<{ page: number; finit: boolean }>({
   key: 'pagination-state',
-  default: 2,
+  default: { page: 1, finit: false },
 });
 
-export const booksListState = selector<Book[]>({
-  key: 'movies-list',
-  get: async ({ get }) => {
-    const pagination = get(paginationState);
-    // get book list
-
-    return []
-  },
+export const booksListState = atom<Book[]>({
+  key: 'books-list',
+  default: [],
 });
 
 export const selectedBookState = atom<Book>({

@@ -1,30 +1,16 @@
 // Generate automaticaly by dbuilder
 import React from "react";
 
-import { Box, Container } from "@billers/library";
+import { Box, Container, Title } from "@billers/library";
 
 const Home = (props) => {
-  const {
-    ROOT,
-    zysub,
-    SuggestionList,
-    hhmeh,
-    lyiwl,
-    jxuln,
-    MovieList,
-    qqynq,
-    Suggestion,
-    pxcjq,
-  } = props;
+  const { ROOT, vclndk, mvxpnb, List, aktfnw, equwea } = props;
   return (
     <Box {...ROOT}>
-      <Box {...qqynq} {...Suggestion} />
-      <Box {...pxcjq}>
-        <Container {...hhmeh}>
-          <Box {...zysub} {...SuggestionList} />
-        </Container>
-        <Container {...lyiwl}>
-          <Box {...jxuln} {...MovieList} />
+      <Box {...aktfnw}>
+        <Container {...vclndk}>
+          <Title {...equwea} />
+          <Box {...mvxpnb} {...List} />
         </Container>
       </Box>
     </Box>
@@ -45,23 +31,19 @@ Home.defaultProps = {
       background: "#121212",
     },
   },
-  zysub: { tag: "div", css: { minHeight: "380px" } },
-  hhmeh: {
-    maxWidth: "lg",
-    disableGutters: false,
-    fixed: false,
-    css: { position: "relative", display: "flex", flexDirection: "column" },
-  },
-  lyiwl: {
+  vclndk: {
     maxWidth: "lg",
     disableGutters: false,
     fixed: false,
     css: { marginTop: "70px", marginBottom: "70px" },
   },
-  jxuln: { tag: "div", css: { display: "flex", flexWrap: "wrap" } },
-  qqynq: { tag: "div", className: "suggestion-bg", css: { minHeight: "90vh" } },
-  pxcjq: {
-    tag: "div",
-    css: { position: "sticky", marginTop: "-243px", zIndex: "1" },
+  mvxpnb: { tag: "div", css: { display: "flex", flexWrap: "wrap" } },
+  aktfnw: { tag: "div", css: { minHeight: "90vh", paddingBottom: "70px" } },
+  equwea: {
+    variant: "h1",
+    text: "React example 🔥",
+    gutterBottom: false,
+    noWrap: false,
+    css: { textAlign: "center", paddingBottom: "32px" },
   },
 };

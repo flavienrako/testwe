@@ -11,14 +11,13 @@
   z-index: 100;
 }
 
-.suggestion-card > div,
-.movie-card img {
+.card {
   transition: all 300ms ease;
   cursor: pointer;
   border: solid 2px rgba(255, 255, 255, 0.3);
+  transform: scale(0.98);
 }
-.suggestion-card:hover > div,
-.movie-card img:hover {
+.card:hover {
   transform: scale(0.96);
 }
 .suggestion-card .selected {
@@ -55,7 +54,7 @@
 }
 
 .suggestion-slide:after {
-  content: "";
+  content: '';
   position: absolute;
   width: 100%;
   height: 100%;
@@ -73,7 +72,7 @@
 }
 
 .overlay-black:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -88,7 +87,7 @@
 }
 
 .overlay-blur:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
