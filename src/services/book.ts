@@ -13,7 +13,7 @@ export async function getBooks(request: AxiosRequestConfig) {
     )
   }
 }
-export async function getCharachers(request: AxiosRequestConfig) {
+export async function getCharacher(request: AxiosRequestConfig) {
   try {
     const response = await Axios.request<Book>(request)
     return response.data

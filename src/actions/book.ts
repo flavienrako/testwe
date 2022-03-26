@@ -1,9 +1,7 @@
 import { useCallback, useEffect } from 'react';
 
 import { useRecoilState } from 'recoil';
-import { getCharachers } from 'services/book';
 import { selectedBookState } from 'store';
-import { Book } from 'types';
 
 const useBook = () => {
   const [book, setBook] = useRecoilState(selectedBookState);

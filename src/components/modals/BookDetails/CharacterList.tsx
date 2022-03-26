@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
+import axios from 'axios';
 import Skeleton from 'components/pages/Home/BookList/Skeleton';
 import { Character } from 'types/characters';
 
@@ -11,22 +12,30 @@ type CharacterListProps = {
 };
 
 const CharacterList = ({ characters }: CharacterListProps) => {
-  const [currentChar, setCurrentChar] = useState<Character[] | any>([]);
+  const [currentChar, setCurrentChar] = useState<Character[]>([]);
   const [page, setPage] = useState(0);
   const limit = 10;
   const pageSize = characters?.length % limit;
 
+  const fetchCharacterByRange = (c) =>
+    c.map((url: string) =>
+      axios
+        .request<Character>({
+          url,
+          method: 'GET',
+        })
+        .then(({ data }) => data)
+    );
+
   useEffect(() => {
     if (page > 0 && page <= pageSize) {
-      // fetch character in page
-
-      console.log('page: ', page);
-      console.log(characters);
-      console.log();
-      setCurrentChar((c) => [
-        ...c,
-        ...characters.slice((page - 1) * limit, page * limit),
-      ]);
+      Promise.all(
+        fetchCharacterByRange(
+          characters.slice((page - 1) * limit, page * limit)
+        )
+      ).then((res: any) => {
+        setCurrentChar((c) => [...c, ...res]);
+      });
     }
   }, [page]);
 
@@ -40,14 +49,25 @@ const CharacterList = ({ characters }: CharacterListProps) => {
 
   return (
     <div>
-      {currentChar.map((url) => (
-        <CharacterUi key={url} name={{ name: "" }} playedBy={{ playedBy: url }} />
-      ))}
-      <div ref={ref}>
-        {[1, 2, 3, 4].map((i) => (
-          <Skeleton height={56} key={i} width="100%" />
-        ))}
-      </div>
+      {currentChar.map(({ name, playedBy }) => {
+        const players = playedBy?.join(', ')
+        return(
+        <CharacterUi
+          key={name}
+          name={{ name }}
+          playedBy={{
+            playedBy: players,
+            hidden: !players,
+          }}
+        />
+      )})}
+      {page <= pageSize && (
+        <div ref={ref}>
+          {[1, 2, 3, 4].map((i) => (
+            <Skeleton height={56} key={i} width="100%" />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
