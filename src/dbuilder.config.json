@@ -1,0 +1,6 @@
+{
+  "name": "Book",
+  "directory": "components",
+  "ext": ".tsx",
+  "toTsx": true
+}
