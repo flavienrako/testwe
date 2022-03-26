@@ -1,23 +1,22 @@
-export type Movie = {
-  adult?: boolean;
-  backdrop_path?: string;
-  genre_ids?: number[];
-  id: number;
-  original_language?: string;
-  original_title?: string;
-  overview?: string;
-  popularity?: number;
-  poster_path?: string;
-  release_date?: string;
-  title?: string;
-  video?: boolean;
-  vote_average?: number;
-  vote_count?: number;
+import { Character } from './characters';
+
+export type Book = {
+  url: string;
+  name: string;
+  isbn: string;
+  authors: string[];
+  numberOfPages: number;
+  publisher: string;
+  country: string;
+  mediaType: string;
+  released: string;
+  characters: string[] | Character[];
+  povCharacters: string[];
 };
 
-export type MovieApiResponse = {
+export type BookApiResponse = {
   page: number;
-  results: Movie[];
+  results: Book[];
   total_pages: number;
   total_results: number;
 };
